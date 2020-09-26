@@ -18,12 +18,6 @@ namespace App7
             InitializeComponent();
 
 
-            treeeee.Clicked += (object sender, EventArgs e) => {
-            
-            
-            };
-
-
             sub.ItemsSource = new[] {
                 "Text 1",
                 "Text 2",
