@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,68 +12,83 @@ namespace App7
 {
     public class Good
     {
-        public string name;
-        public int count;
+        public string Name { get; set; }
+        public int Count { get; set; }
     }
 
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Cart : ContentPage
     {
+
+
         public static SortedDictionary<string, Good> goods = new SortedDictionary<string, Good>();
         public Cart()
         {
             InitializeComponent();
+            var buf = goods.Select((a) => { return a.Value; }).ToList();
+            goods_list.ItemsSource = buf;
 
-            foreach(var i in goods)
-            {
-                StackLayout goodStack = new StackLayout();
-                goodStack.Orientation = StackOrientation.Horizontal;
-                goodStack.Children.Add(new Image());
-                goodStack.Children.Add(new Label() { Text = i.Value.name });
+            //goods_list.ItemsSource = buf;
 
-                Label countLabel = new Label() { Text = i.Value.count.ToString()};
+            //foreach(var i in goods)
+            //{
+            //    StackLayout goodStack = new StackLayout();
+            //    //goodStack.Orientation = StackOrientation.Horizontal;
+            //    //goodStack.Children.Add(new Image());
+            //    //goodStack.Children.Add(new Label() { Text = i.Value.name });
 
-                goodStack.Children.Add(countLabel);
+            //    Label countLabel = new Label() { Text = i.Value.count.ToString()};
 
-                Stepper itemCounter = new Stepper();
-                itemCounter.Value = Cart.goods[i.Key].count;
-                goodStack.Children.Add(itemCounter);
+            //    goodStack.Children.Add(countLabel);
 
-                Frame goodFrame = new Frame() { Content = goodStack };
+            //    Stepper itemCounter = new Stepper();
+            //    itemCounter.Value = Cart.goods[i.Key].count;
+            //    goodStack.Children.Add(itemCounter);
 
-                itemCounter.ValueChanged += async (a, b) => {
-                    Cart.goods[i.Key].count = (int)itemCounter.Value;
-                    countLabel.Text = Cart.goods[i.Key].count.ToString();
-                    if(Cart.goods[i.Key].count == 0)
-                    {
-                        if (await DisplayAlert("Attention", "You sure?", "Yes", "No"))
-                        {
-                            cart.Children.Remove(goodFrame);
-                            goods.Remove(i.Key);
-                        }
-                        else
-                        {
-                            Cart.goods[i.Key].count = 1;
-                            countLabel.Text = Cart.goods[i.Key].count.ToString();
-                            itemCounter.Value = 1;
-                        }
-                    }
-                };
+            //    Frame goodFrame = new Frame() { Content = goodStack };
 
-                Button frameRemover = new Button() { Text = "X" };
+            //    itemCounter.ValueChanged += async (a, b) => {
+            //        Cart.goods[i.Key].count = (int)itemCounter.Value;
+            //        countLabel.Text = Cart.goods[i.Key].count.ToString();
+            //        if(Cart.goods[i.Key].count == 0)
+            //        {
+            //            if (await DisplayAlert("Attention", "You sure?", "Yes", "No"))
+            //            {
+            //                cart.Children.Remove(goodFrame);
+            //                goods.Remove(i.Key);
+            //            }
+            //            else
+            //            {
+            //                Cart.goods[i.Key].count = 1;
+            //                countLabel.Text = Cart.goods[i.Key].count.ToString();
+            //                itemCounter.Value = 1;
+            //            }
+            //        }
+            //    };
 
-                goodStack.Children.Add(frameRemover);
+            //    Button frameRemover = new Button() { Text = "X" };
 
-                frameRemover.Clicked += (a,b) => {
+            //    goodStack.Children.Add(frameRemover);
 
-                    cart.Children.Remove(goodFrame);
-                    goods.Remove(i.Key);
-                };
+            //    frameRemover.Clicked += (a,b) => {
+
+            //        cart.Children.Remove(goodFrame);
+            //        goods.Remove(i.Key);
+            //    };
 
 
                 
 
-                cart.Children.Add(goodFrame);
+            //    cart.Children.Add(goodFrame);
+            //}
+        }
+
+        private async void Button_Clicked(object sender, EventArgs e)
+        {
+            if(await DisplayAlert("Order","Are you sure?", "Yes", "No"))
+            {
+                await DisplayAlert("Order", "Eeee boy!", "Ok");
+                await Navigation.PopAsync();
             }
         }
     }

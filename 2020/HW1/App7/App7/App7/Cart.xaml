@@ -3,16 +3,37 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:App7"
              mc:Ignorable="d"
              x:Class="App7.Cart">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <x:Array x:Key="kkk" Type="{x:Type local:Good}">
+                <local:Good Name ="123" Count="123" ></local:Good>
+            </x:Array>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
-            <ScrollView>
-                <StackLayout x:Name="cart">
-                    
-                </StackLayout>
+        <StackLayout Margin="15">
+            <ListView x:Name="goods_list" ItemsSource="{StaticResource Key=kkk}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout  x:Name="cart" Orientation="Horizontal">
+                                <Image/>
+                                <Label VerticalOptions="Center" FontSize="Large"  Text="{Binding Name}"/>
+                                <Label VerticalOptions="Center" FontSize="Large" Text="{Binding Count}"/>
+                                <Stepper  HorizontalOptions="EndAndExpand"/>
+                                <Button Text="x"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button VerticalOptions="EndAndExpand" Clicked="Button_Clicked" Text="Order" BackgroundColor="#EE202A">
 
-            </ScrollView>
+            </Button>
+
         </StackLayout>
     </ContentPage.Content>
     

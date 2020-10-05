@@ -7,7 +7,7 @@
              x:Class="App7.MainPage">
     <StackLayout>
         
-        <Picker x:Name="sub" SelectedIndexChanged="sub_SelectedIndexChanged" BackgroundColor="Blue">
+        <Picker x:Name="sub" SelectedIndexChanged="sub_SelectedIndexChanged" BackgroundColor="#E042AA">
 
         </Picker>
         <ScrollView VerticalOptions="FillAndExpand" BackgroundColor="Green">

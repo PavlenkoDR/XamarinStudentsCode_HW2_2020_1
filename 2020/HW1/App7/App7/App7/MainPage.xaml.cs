@@ -33,8 +33,8 @@ namespace App7
             stepper.Value = 0;
             if (Cart.goods.ContainsKey(sub.SelectedItem?.ToString()))
             {
-                stepper.Value = Cart.goods[sub.SelectedItem?.ToString()].count;
-                amount.Text = Cart.goods[sub.SelectedItem?.ToString()].count.ToString();
+                stepper.Value = Cart.goods[sub.SelectedItem?.ToString()].Count;
+                amount.Text = Cart.goods[sub.SelectedItem?.ToString()].Count.ToString();
             }
         }
 
@@ -44,13 +44,14 @@ namespace App7
             amount.Text = (_sender as Stepper)?.Value.ToString();
         }
 
-        private void order_Clicked(object sender, EventArgs e)
+        private async void order_Clicked(object sender, EventArgs e)
         {
             
 
-            Cart.goods[sub.SelectedItem?.ToString()] = new Good() { name = sub.SelectedItem?.ToString(), count = int.Parse(amount.Text) };
+            Cart.goods[sub.SelectedItem?.ToString()] = new Good() { Name = sub.SelectedItem?.ToString(), Count = int.Parse(amount.Text) };
+            await DisplayAlert("Order", "Successful", "Ok");
         }
-
+        
         private void Button_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new Cart());
