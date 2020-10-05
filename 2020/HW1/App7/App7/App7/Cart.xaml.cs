@@ -29,11 +29,37 @@ namespace App7
                 goodStack.Orientation = StackOrientation.Horizontal;
                 goodStack.Children.Add(new Image());
                 goodStack.Children.Add(new Label() { Text = i.Value.name });
-                goodStack.Children.Add(new Label() { Text = i.Value.count.ToString() });
-                goodStack.Children.Add(new Stepper());
+
+                Label countLabel = new Label() { Text = i.Value.count.ToString()};
+
+                goodStack.Children.Add(countLabel);
+
+                Stepper itemCounter = new Stepper();
+                itemCounter.Value = Cart.goods[i.Key].count;
+                goodStack.Children.Add(itemCounter);
+
+                Frame goodFrame = new Frame() { Content = goodStack };
+
+                itemCounter.ValueChanged += async (a, b) => {
+                    Cart.goods[i.Key].count = (int)itemCounter.Value;
+                    countLabel.Text = Cart.goods[i.Key].count.ToString();
+                    if(Cart.goods[i.Key].count == 0)
+                    {
+                        if (await DisplayAlert("Attention", "You sure?", "Yes", "No"))
+                        {
+                            cart.Children.Remove(goodFrame);
+                            goods.Remove(i.Key);
+                        }
+                        else
+                        {
+                            Cart.goods[i.Key].count = 1;
+                            countLabel.Text = Cart.goods[i.Key].count.ToString();
+                            itemCounter.Value = 1;
+                        }
+                    }
+                };
 
                 Button frameRemover = new Button() { Text = "X" };
-                Frame goodFrame = new Frame() { Content = goodStack };
 
                 goodStack.Children.Add(frameRemover);
 

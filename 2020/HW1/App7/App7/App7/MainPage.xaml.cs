@@ -29,10 +29,18 @@ namespace App7
         private void sub_SelectedIndexChanged(object _sender, EventArgs _e)
         {
             description.Text = (_sender as Picker)?.SelectedItem.ToString();
+            amount.Text = "0";
+            stepper.Value = 0;
+            if (Cart.goods.ContainsKey(sub.SelectedItem?.ToString()))
+            {
+                stepper.Value = Cart.goods[sub.SelectedItem?.ToString()].count;
+                amount.Text = Cart.goods[sub.SelectedItem?.ToString()].count.ToString();
+            }
         }
 
         private void stepper_ValueChanged(object _sender, ValueChangedEventArgs _e)
         {
+
             amount.Text = (_sender as Stepper)?.Value.ToString();
         }
 
