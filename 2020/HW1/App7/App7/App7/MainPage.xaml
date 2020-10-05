@@ -33,10 +33,14 @@
             
         </ScrollView>
 
-        <Button x:Name="order" VerticalOptions="End" Text="Order" Clicked="order_Clicked">
-            
-        </Button>
-               
+        <StackLayout Orientation="Horizontal">
+            <Button x:Name="order" VerticalOptions="End" Text="Order" Clicked="order_Clicked" HorizontalOptions="FillAndExpand">
+
+            </Button>
+            <Button Text="Cart" Clicked="Button_Clicked">
+                
+            </Button>
+        </StackLayout>       
 
 
     </StackLayout>

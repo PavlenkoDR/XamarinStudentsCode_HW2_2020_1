@@ -38,7 +38,15 @@ namespace App7
 
         private void order_Clicked(object sender, EventArgs e)
         {
-            Cart.goods.Add(new Good() { name = sub.SelectedItem.ToString(), count = int.Parse(amount.Text) });
+            
+
+            Cart.goods[sub.SelectedItem?.ToString()] = new Good() { name = sub.SelectedItem?.ToString(), count = int.Parse(amount.Text) };
+        }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new Cart());
+
         }
     }
 }
