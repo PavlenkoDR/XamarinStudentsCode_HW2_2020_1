@@ -19,8 +19,6 @@ namespace App7
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Cart : ContentPage
     {
-
-
         public static SortedDictionary<string, Good> goods = new SortedDictionary<string, Good>();
         public Cart()
         {

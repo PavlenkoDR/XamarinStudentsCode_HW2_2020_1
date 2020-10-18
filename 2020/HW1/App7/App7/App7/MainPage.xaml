@@ -6,10 +6,13 @@
              mc:Ignorable="d"
              x:Class="App7.MainPage">
     <StackLayout>
-        
-        <Picker x:Name="sub" SelectedIndexChanged="sub_SelectedIndexChanged" BackgroundColor="#E042AA">
 
-        </Picker>
+        <Picker x:Name="sub" 
+                SelectedIndexChanged="sub_SelectedIndexChanged" 
+                BackgroundColor="CadetBlue"
+                SelectedItem="0"/>
+
+
         <ScrollView VerticalOptions="FillAndExpand" BackgroundColor="Green">
             <StackLayout x:Name="cart" VerticalOptions="FillAndExpand">
                 <Frame BorderColor="Black" BackgroundColor="red" HeightRequest="250">
@@ -18,14 +21,14 @@
                     </Image>
                 </Frame>
                 <StackLayout Orientation="Horizontal">
-                    <Editor x:Name="amount" HorizontalOptions="FillAndExpand">
+                    <Editor TextChanged="amount_TextChanged" x:Name="amount" HorizontalOptions="FillAndExpand" BackgroundColor="CadetBlue" Keyboard="Numeric">
 
                     </Editor>
                     <Stepper x:Name="stepper" ValueChanged="stepper_ValueChanged">
 
                     </Stepper>
                 </StackLayout>
-                <Label x:Name="description" Text="description" HorizontalOptions="Center">
+                <Label x:Name="description" Text="description" HorizontalOptions="Center" FontSize="18">
                     
                 </Label>
                 

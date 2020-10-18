@@ -24,6 +24,7 @@ namespace App7
                 "Text 3",
                 "Text 4"
             };
+            sub.SelectedIndex = 0;
         }
 
         private void sub_SelectedIndexChanged(object _sender, EventArgs _e)
@@ -40,7 +41,6 @@ namespace App7
 
         private void stepper_ValueChanged(object _sender, ValueChangedEventArgs _e)
         {
-
             amount.Text = (_sender as Stepper)?.Value.ToString();
         }
 
@@ -56,6 +56,12 @@ namespace App7
         {
             Navigation.PushAsync(new Cart());
 
+        }
+
+        private void amount_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            amount.Text = new string((sender as Editor)?.Text.Where(x => char.IsDigit(x)).ToArray());
+            stepper.Value = amount.Text.Length > 0 ? int.Parse(amount.Text): 0;
         }
     }
 }
