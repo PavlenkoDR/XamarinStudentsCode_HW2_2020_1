@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App7.Page1">
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <Editor x:Name="TextBox" AbsoluteLayout.LayoutFlags="All" 
+                    AbsoluteLayout.LayoutBounds="0, 0, 1, 0.85" 
+                    BackgroundColor="White"/>
+
+            <Button Text="Add" AbsoluteLayout.LayoutFlags="All" 
+                    AbsoluteLayout.LayoutBounds="0.97, 0.97, 0.16, 0.09" 
+                    Clicked="Button_Clicked" CornerRadius="90"/>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>
