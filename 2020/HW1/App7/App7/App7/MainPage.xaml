@@ -17,7 +17,7 @@
         <ScrollView VerticalOptions="FillAndExpand" BackgroundColor="Green">
             <StackLayout x:Name="cart" VerticalOptions="FillAndExpand">
                 <Frame BorderColor="Black" BackgroundColor="red" HeightRequest="250">
-                    <Image BackgroundColor="White"  Source="shreK.jpg">
+                    <Image BackgroundColor="White"  x:Name="goVno" Source="shreK.jpg">
 
                     </Image>
                 </Frame>

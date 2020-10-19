@@ -14,6 +14,7 @@ namespace App7
     {
         public string Name { get; set; }
         public int Count { get; set; }
+        public string PicPath { get; set; }
     }
 
     [XamlCompilation(XamlCompilationOptions.Compile)]

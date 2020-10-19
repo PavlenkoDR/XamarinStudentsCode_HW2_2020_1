@@ -18,20 +18,39 @@ namespace App7
         {
             InitializeComponent();
 
-
-            sub.ItemsSource = new[] {
-                "Text 1",
-                "Text 2",
-                "Text 3",
-                "Text 4"
-            };
+            sub.ItemsSource = itemsList.Select(a => { return a.Name; }).ToList();
             sub.SelectedIndex = 0;
+        }
+
+        List<MyItem> itemsList = new List<MyItem>()
+            {
+                new MyItem()
+                {
+                    Name = "Text1",
+                    PicPath = "shreK.jpg"
+                },
+                new MyItem()
+                {
+                    Name = "Text2",
+                    PicPath = "rocki.jpg"
+                },
+                new MyItem()
+                {
+                    Name = "Text3",
+                    PicPath = "whater.jpg"
+                }
+            };
+        public class MyItem
+        {
+            public string Name;
+            public string PicPath;
         }
 
         private void sub_SelectedIndexChanged(object _sender, EventArgs _e)
         {
             description.Text = (_sender as Picker)?.SelectedItem.ToString();
             amount.Text = "0";
+            goVno.Source = ImageSource.FromFile(itemsList.Where(a => a.Name == sub.SelectedItem?.ToString()).First().PicPath);
             stepper.Value = 0;
             if (Cart.goods.ContainsKey(sub.SelectedItem?.ToString()))
             {
@@ -47,9 +66,14 @@ namespace App7
 
         private async void order_Clicked(object sender, EventArgs e)
         {
-            
 
-            Cart.goods[sub.SelectedItem?.ToString()] = new Good() { Name = sub.SelectedItem?.ToString(), Count = int.Parse(amount.Text) };
+
+            Cart.goods[sub.SelectedItem?.ToString()] = new Good()
+            {
+                Name = sub.SelectedItem?.ToString(),
+                Count = int.Parse(amount.Text),
+                PicPath = itemsList.Where(a => a.Name == sub.SelectedItem?.ToString()).First().PicPath
+            };
             await DisplayAlert("Order", "Successful", "Ok");
         }
         
