@@ -26,7 +26,7 @@ namespace App7
             {
                 new MyItem()
                 {
-                    Name = "Text1",
+                    Name = "Shrek",
                     PicPath = "shreK.jpg"
                 },
                 new MyItem()
@@ -76,17 +76,21 @@ namespace App7
             };
             await DisplayAlert("Order", "Successful", "Ok");
         }
-        
+
         private void Button_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new Cart());
+            var button = sender as Button;
+            button.IsEnabled = false;
 
+            var cart = new Cart();
+            Navigation.PushAsync(cart);
+            cart.Disappearing += (send, ev) => button.IsEnabled = true;
         }
 
         private void amount_TextChanged(object sender, TextChangedEventArgs e)
         {
             amount.Text = new string((sender as Editor)?.Text.Where(x => char.IsDigit(x)).ToArray());
-            stepper.Value = amount.Text.Length > 0 ? int.Parse(amount.Text): 0;
+            stepper.Value = amount.Text.Length > 0 ? int.Parse(amount.Text) : 0;
         }
     }
 }
