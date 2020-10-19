@@ -29,15 +29,17 @@
                                 <Image Grid.Column="0" BackgroundColor="Navy"/>
                                 <Label Grid.Column="1" VerticalOptions="Center" FontSize="Large"  Text="{Binding Name}"/>
                                 <Label Grid.Column="2" VerticalOptions="Center" FontSize="Large" Text="{Binding Count}"/>
-                                <Button Grid.Column="3" Text="x"/>
+                                <Button Grid.Column="3" Text="x" Clicked="DeleteClicked"  CommandParameter="{Binding Name}" />
                             </Grid>
-                        </ViewCell>
+                        </ViewCell> 
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
             <Button VerticalOptions="EndAndExpand" Clicked="Button_Clicked" Text="Order" BackgroundColor="#EE202A">
+            
 
             </Button>
+            
 
         </StackLayout>
     </ContentPage.Content>

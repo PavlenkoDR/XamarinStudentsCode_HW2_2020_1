@@ -4,6 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             xmlns:local="clr-namespace:App7"
              x:Class="App7.MainPage">
     <StackLayout>
 
@@ -16,8 +17,8 @@
         <ScrollView VerticalOptions="FillAndExpand" BackgroundColor="Green">
             <StackLayout x:Name="cart" VerticalOptions="FillAndExpand">
                 <Frame BorderColor="Black" BackgroundColor="red" HeightRequest="250">
-                    <Image BackgroundColor="White">
-                        
+                    <Image BackgroundColor="White"  Source="shreK.jpg">
+
                     </Image>
                 </Frame>
                 <StackLayout Orientation="Horizontal">

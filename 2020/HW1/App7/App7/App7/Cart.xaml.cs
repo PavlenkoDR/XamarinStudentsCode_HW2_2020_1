@@ -25,6 +25,8 @@ namespace App7
             InitializeComponent();
             var buf = goods.Select((a) => { return a.Value; }).ToList();
             goods_list.ItemsSource = buf;
+            
+
 
             //goods_list.ItemsSource = buf;
 
@@ -88,6 +90,21 @@ namespace App7
                 await DisplayAlert("Order", "Eeee boy!", "Ok");
                 await Navigation.PopAsync();
             }
+        }
+
+        public void DeleteClicked(object sender, EventArgs e)
+        {
+            var item = (Xamarin.Forms.Button)sender;
+            var listitem = (from itm in goods
+                            where itm.Value.Name == item.CommandParameter.ToString()
+                            select itm).ToList().First();
+                       
+
+            goods.Remove(listitem.Key);
+
+            var buf = goods.Select((a) => { return a.Value; }).ToList();
+            goods_list.ItemsSource = buf;
+
         }
     }
 }
