@@ -31,36 +31,36 @@
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <ListView x:Name="Col1" Grid.Column="0" ItemsSource="{StaticResource Key=kkk1}" 
-                  IsPullToRefreshEnabled="True" HasUnevenRows= "True">
-            <ListView.ItemTemplate>
+        <StackLayout x:Name="Col1"
+                  Grid.Column="0"
+                  BindableLayout.ItemsSource="{DynamicResource Key=kkk1}" 
+                  BackgroundColor="Red"
+                  VerticalOptions="Start"
+                  >
+            <BindableLayout.ItemTemplate>
                 <DataTemplate>
-                    <ViewCell>
-                        <StackLayout Padding="7">
-                            <Frame Padding="7" >
-                                <Label Text="{Binding Text}" LineBreakMode="WordWrap"></Label>
-                            </Frame>
-                        </StackLayout>
-                    </ViewCell>
+                    <StackLayout Padding="7">
+                        <Frame Padding="7" >
+                            <Label Text="{Binding Text}" LineBreakMode="WordWrap"></Label>
+                        </Frame>
+                    </StackLayout>
                 </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-        <ListView x:Name="Col2" Grid.Column="1" ItemsSource="{StaticResource Key=kkk2}" 
-                  IsPullToRefreshEnabled="True" HasUnevenRows= "True">
-            <ListView.ItemTemplate>
+            </BindableLayout.ItemTemplate>
+        </StackLayout>
+        <StackLayout x:Name="Col2"
+                     Grid.Column="1"
+                     BindableLayout.ItemsSource="{StaticResource Key=kkk2}" 
+                     BackgroundColor="Aqua"
+                     VerticalOptions="Start">
+            <BindableLayout.ItemTemplate>
                 <DataTemplate>
-                    <ViewCell>
-                        <StackLayout Padding="7">
-                            <Frame Padding="7" >
-                                <Label Text="{Binding Text}" LineBreakMode="WordWrap"></Label>
-                            </Frame>
-                        </StackLayout>
-                    </ViewCell>
+                    <StackLayout Padding="7">
+                        <Frame Padding="7" >
+                            <Label Text="{Binding Text}" LineBreakMode="WordWrap"></Label>
+                        </Frame>
+                    </StackLayout>
                 </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-        <StackLayout x:Name="Left_Stack">
-
+            </BindableLayout.ItemTemplate>
         </StackLayout>
 
         <Button Grid.Column="1" Text="Add" HorizontalOptions="EndAndExpand" 

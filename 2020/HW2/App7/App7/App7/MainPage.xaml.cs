@@ -20,8 +20,8 @@ namespace App7
         public MainPage()
         {
             InitializeComponent();
-            Col1.ItemsSource = Instance.marks1;
-            Col2.ItemsSource = Instance.marks2;
+            BindableLayout.SetItemsSource(Col1, Instance.marks1);
+            BindableLayout.SetItemsSource(Col2, Instance.marks2);
             Instance.marks1.CollectionChanged += (s, e) =>
             {
                 Instance.l1 = Col1.Height;
