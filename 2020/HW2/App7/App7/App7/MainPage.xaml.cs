@@ -27,28 +27,19 @@ namespace App7
     public partial class MainPage : ContentPage
     {
 
-        public class TapViewModel : INotifyPropertyChanged
+        public ICommand TapCommand
         {
-            int taps = 0;
-            ICommand tapCommand;
-            public TapViewModel()
+            get
             {
-                // configure the TapCommand with a method
-                tapCommand = new Command(OnTapped);
+                return new Command<string>((x) => ExecuteAction(x));
             }
-            public ICommand TapCommand
-            {
-                get { return tapCommand; }
-            }
-
-            public event PropertyChangedEventHandler PropertyChanged;
-
-            void OnTapped(object s)
-            {
-                taps++;
-            }
-            //region INotifyPropertyChanged code omitted
         }
+        public void ExecuteAction(string x)
+        {
+            Console.WriteLine($"!{x}");
+        }
+
+
         public MainPage()
         {
             InitializeComponent();
@@ -78,7 +69,5 @@ namespace App7
         {
             Instance.l2 = Col2.Height;
         }
-
-
     }
 }
