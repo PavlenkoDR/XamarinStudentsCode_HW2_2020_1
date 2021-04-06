@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31025.194
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaterShopApp.Android", "WaterShopApp\WaterShopApp.Android\WaterShopApp.Android.csproj", "{A2DCF55A-207A-4F16-94E3-98697586C2B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaterShopApp", "WaterShopApp\WaterShopApp\WaterShopApp.csproj", "{75F71A68-1EF5-40F6-9E37-AA8127FA07D1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A2DCF55A-207A-4F16-94E3-98697586C2B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2DCF55A-207A-4F16-94E3-98697586C2B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2DCF55A-207A-4F16-94E3-98697586C2B3}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{A2DCF55A-207A-4F16-94E3-98697586C2B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2DCF55A-207A-4F16-94E3-98697586C2B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2DCF55A-207A-4F16-94E3-98697586C2B3}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{75F71A68-1EF5-40F6-9E37-AA8127FA07D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75F71A68-1EF5-40F6-9E37-AA8127FA07D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75F71A68-1EF5-40F6-9E37-AA8127FA07D1}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{75F71A68-1EF5-40F6-9E37-AA8127FA07D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75F71A68-1EF5-40F6-9E37-AA8127FA07D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75F71A68-1EF5-40F6-9E37-AA8127FA07D1}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3E1C2443-824F-4001-8270-EBF3200C93E3}
+	EndGlobalSection
+EndGlobal
