@@ -24,6 +24,8 @@ namespace WaterShopApp
 
         public string itemDescription;
 
+        public string imageId;
+
         public ItemPushPage()
         {
             InitializeComponent();
@@ -98,8 +100,10 @@ namespace WaterShopApp
             itemDescription = (sender as Picker)?.SelectedItem.ToString();
             //stuffView.Source = "ABottleOfWater.jpg";
             String str = (sender as Picker)?.SelectedItem.ToString();
-            
-            stuffView.Source = App.menuData.Where(x => { return x.name == str; }).ToList()[0].source;
+            var source = App.menuData.Where(x => { return x.name == str; }).ToList()[0].source;
+
+            stuffView.Source = source;
+            imageId = source;
             //Console.WriteLine();
         }
     }

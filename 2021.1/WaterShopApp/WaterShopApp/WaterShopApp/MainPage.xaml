@@ -19,7 +19,7 @@
                                 <ColumnDefinition Width="0.2*"/>
                                 <ColumnDefinition Width="0.1*"/>
                             </Grid.ColumnDefinitions>
-                            <Image Source="TheBaikal.jpg" Grid.Column="0" HeightRequest="1"/>
+                            <Image Source="{Binding imageId}" Grid.Column="0" HeightRequest="1"/>
                             <Label VerticalOptions="Center" HorizontalOptions="CenterAndExpand" FontSize="Large" Grid.Column="1" TextColor="White" Text="{Binding itemDescription}" ></Label>
                             <Label x:Name="itemCounter" ClassId="itemCountId" Text="{Binding itemCount}" VerticalOptions="Center" FontSize="Large" TextColor="White" HorizontalOptions="CenterAndExpand" Grid.Column="2"/>
                             <Grid VerticalOptions="Center" Padding="0" Grid.Column="3">

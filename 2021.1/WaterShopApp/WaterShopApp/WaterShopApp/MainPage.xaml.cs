@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -15,16 +16,27 @@ namespace WaterShopApp
         static private int idCounter { get; set; } = 0;
         public int itemCount { get; set; }
         public string itemDescription { get; set; }
+        public string imageId { get; set; }
         public ItemData() {
             classId = idCounter++;
         }
     }
+
+    public class ObservableCollectionEx<T> : ObservableCollection<T>
+    {
+        protected override void OnPropertyChanged(PropertyChangedEventArgs e)
+        {
+            base.OnPropertyChanged(e);
+            Console.WriteLine();
+            
+        }
+    };
     public partial class MainPage : ContentPage
     {
         private int counter = 1;
         public static int maxValue { get => 100; private set {} }
         public static int minValue { get => 1; private set {} }
-        public static ObservableCollection<ItemData> itemDatas = new ObservableCollection<ItemData>();
+        public static ObservableCollectionEx<ItemData> itemDatas = new ObservableCollectionEx<ItemData>();
         public MainPage()
         {
             InitializeComponent();
@@ -42,9 +54,6 @@ namespace WaterShopApp
         {
             var button = sender as Button;
             var classId = button.ClassId;
-            var grid = button.Parent.Parent as Grid;
-            var itemCount = grid.Children.Where(x => { return x.ClassId == "itemCountId"; }).ToList()[0] as Label;
-            itemCount.Text = (int.Parse(itemCount.Text) - 1).ToString();
             foreach(var item in itemDatas) 
             { 
                 if (item.classId.ToString() == classId && item.itemCount > minValue)
@@ -52,15 +61,15 @@ namespace WaterShopApp
                     item.itemCount--;
                 }
             }
+            BindableLayout.SetItemsSource(items, new List<ItemData>());
+            BindableLayout.SetItemsSource(items, itemDatas);
+
         }
 
         private void itemIncButton_Clicked(object sender, EventArgs e)
         {
             var button = sender as Button;
             var classId = button.ClassId;
-            var grid = button.Parent.Parent as Grid;
-            var itemCount = grid.Children.Where(x => { return x.ClassId == "itemCountId"; }).ToList()[0] as Label;
-            itemCount.Text = (int.Parse(itemCount.Text) + 1).ToString();
             foreach (var item in itemDatas)
             {
                 if (item.classId.ToString() == classId && item.itemCount < maxValue)
@@ -68,16 +77,30 @@ namespace WaterShopApp
                     item.itemCount++;
                 }
             }
+            BindableLayout.SetItemsSource(items, new List<ItemData>());
+            BindableLayout.SetItemsSource(items, itemDatas);
         }
 
         private void itemPageButton_Clicked(object sender, EventArgs e)
         {
             var item = new ItemPushPage();
             Navigation.PushAsync(item);
-
+        
             item.Disappearing += (_sender, ev) =>
-            {
-                MainPage.itemDatas.Add(new ItemData { itemCount = item.itemCount, itemDescription = item.itemDescription });
+            {   
+                //itemDatas.CollectionChanged
+                var list = MainPage.itemDatas.Where(x => { return x.itemDescription == item.itemDescription; }).ToList();
+                if (list.Count > 0)
+                {
+                    var idx = MainPage.itemDatas.IndexOf(list.First());
+                    itemDatas[idx].itemCount = item.itemCount;
+                }
+                else {
+                    MainPage.itemDatas.Add(new ItemData { itemCount = item.itemCount, imageId = item.imageId, itemDescription = item.itemDescription });
+                }
+
+                BindableLayout.SetItemsSource(items, new List<ItemData>());
+                BindableLayout.SetItemsSource(items, itemDatas);
             };
   
                 
